@@ -6,9 +6,9 @@ This is the blueprint for the frontend developed in Angular.
 
 - Node 18
 
-Is mandatory to install husky for the  git-hooks
+Is mandatory to install husky for the git-hooks
 
-```npm install husky```
+`npm install husky`
 
 Note: In documentation there is a way to manage node versions
 
@@ -20,24 +20,21 @@ This is the implementation on Angular project features
 - Node: 18.10.0
 - Package Manager: npm 8.19.2
 - Angular: 16.2.0
-- @angular-devkit/architect       0.1602.0
-- @angular-devkit/build-angular   16.2.0
-- @angular-devkit/core            16.2.0
-- @angular-devkit/schematics      16.2.0
-- @schematics/angular             16.2.0
-- rxjs                            7.8.1
-- typescript                      5.1.6
-- zone.js                         0.13.1
+- @angular-devkit/architect 0.1602.0
+- @angular-devkit/build-angular 16.2.0
+- @angular-devkit/core 16.2.0
+- @angular-devkit/schematics 16.2.0
+- @schematics/angular 16.2.0
+- rxjs 7.8.1
+- typescript 5.1.6
+- zone.js 0.13.1
 
 ## Documentación
-
-- https://corpus.izertis.com/arquitectura/nodejs/angular/arquetipos/1-2-0
 
 We implement Gitflow and convercional
 
 - Convencional commit https://www.conventionalcommits.org/en/v1.0.0/
 - Git flow https://github.com/nvie/gitflow
-
 
 Install nvm On Windows:
 
@@ -50,7 +47,7 @@ Verify the Installation:
 
 Once you have installed NVM, you can verify its installation by running the following command in the terminal:
 
-```nvm --version```
+`nvm --version`
 
 This should display the version of NVM installed on your system.
 
@@ -58,30 +55,29 @@ Install Node.js with NVM:
 
 After installing NVM, you can use it to install and manage different versions of Node.js. For example, to install the latest stable version of Node.js, you can use the following command:
 
-```nvm install stable```
+`nvm install stable`
 
-## Scripts 
-
+## Scripts
 
 Launch project
 
-```npm run start```
+`npm run start`
 
 Launch test project
 
-```npm run test```
+`npm run test`
 
 Launch coverage project, open index.html on the coverage folder that is created after lauch script.
 
-```npm run coverage```
+`npm run coverage`
 
 Check the files lint
 
-```npm run lint```
+`npm run lint`
 
 Check anbd fix files linter
 
-```npm run lint:fix```
+`npm run lint:fix`
 
 ## Test Execution
 
