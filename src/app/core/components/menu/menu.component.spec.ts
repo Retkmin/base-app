@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { NavigationEnd, Router } from '@angular/router';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { LoginService } from '../../services/menu/login.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppModule } from 'src/app/app.module';
 import { Observable, filter, of } from 'rxjs';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -18,15 +19,14 @@ describe('MenuComponent', () => {
       events: of(new NavigationEnd(0, 'home', 'home')).pipe(filter(event => event instanceof NavigationEnd)) 
     };
     await TestBed.configureTestingModule({
-      imports: [
-        BrowserModule,
-        HttpClientTestingModule,
-        AppModule
-      ],
-      providers: [
-        { provide: Router, useValue: routerSpy }
-      ],
-    })
+    imports: [BrowserModule,
+        AppModule],
+    providers: [
+        { provide: Router, useValue: routerSpy },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+})
     .compileComponents();
   });
 

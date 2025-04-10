@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -43,56 +43,54 @@ import { APP_BASE_HREF } from '@angular/common';
 export class TestingHelper {
     public static configureTest(): TestBed {
         return TestBed.configureTestingModule({
-            declarations: [
-                LoginComponent,
-                UserComponent,
-                UserDetailComponent,
-                MainComponent,
-                MenuComponent,
-                HomeComponent,
-                PaginationComponent
-            ],
-            imports: [
-                BrowserModule,
-                FormsModule,
-                AppRoutingModule,
-                HttpClientModule,
-                BrowserAnimationsModule,
-                TranslateModule.forRoot({
-                    loader: {
-                        provide: TranslateLoader,
-                        useFactory: (this.createTranslateLoader),
-                        deps: [HttpClient]
-                    }
-                }),
-                ToastrModule.forRoot(),
-                PaginationModule.forRoot(),
-                NgProgressModule,
-                NgProgressHttpModule,
-                NgProgressRouterModule,
-                NgSelectModule
-            ],
-            providers: [
-                AuthGuard,
-                LoginService,
-                MenuService,
-                UserService,
-                {
-                    provide: HTTP_INTERCEPTORS,
-                    useClass: TokenizedInterceptor,
-                    multi: true
-                },
-                {
-                    provide: HTTP_INTERCEPTORS,
-                    useClass: OAuthInterceptor,
-                    multi: true
-                },
-                {
-                    provide: APP_BASE_HREF, 
-                    useValue : '/' 
-                }
-            ]
-        });
+    declarations: [
+        LoginComponent,
+        UserComponent,
+        UserDetailComponent,
+        MainComponent,
+        MenuComponent,
+        HomeComponent,
+        PaginationComponent
+    ],
+    imports: [BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (this.createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        ToastrModule.forRoot(),
+        PaginationModule.forRoot(),
+        NgProgressModule,
+        NgProgressHttpModule,
+        NgProgressRouterModule,
+        NgSelectModule],
+    providers: [
+        AuthGuard,
+        LoginService,
+        MenuService,
+        UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenizedInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: OAuthInterceptor,
+            multi: true
+        },
+        {
+            provide: APP_BASE_HREF,
+            useValue: '/'
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+});
     }
 
     private static createTranslateLoader(httpClient: HttpClient) {

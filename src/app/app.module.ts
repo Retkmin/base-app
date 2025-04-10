@@ -3,7 +3,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -36,55 +36,49 @@ import { TokenizedInterceptor } from './core/interceptors/tokenized-interceptor'
 import { ServerErrorInterceptor } from './core/interceptors/error-interceptor';
 import { LocalStorageService } from './core/services/local-storage/user-data.service';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    MainComponent,
-    MenuComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
-    ToastrModule.forRoot(),
-    PaginationModule.forRoot(),
-    NgProgressModule,
-    NgProgressHttpModule,
-    NgProgressRouterModule,
-    NgSelectModule
-  ],
-  providers: [
-    AuthGuard,
-    LoginService,
-    MenuService,
-    UserService,
-    LocalStorageService,
-    ErrorService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenizedInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: OAuthInterceptor,
-      multi: true
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+        MainComponent,
+        MenuComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        ToastrModule.forRoot(),
+        PaginationModule.forRoot(),
+        NgProgressModule,
+        NgProgressHttpModule,
+        NgProgressRouterModule,
+        NgSelectModule], providers: [
+        AuthGuard,
+        LoginService,
+        MenuService,
+        UserService,
+        LocalStorageService,
+        ErrorService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenizedInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: OAuthInterceptor,
+            multi: true
+        },
+        { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
 
 export function createTranslateLoader(httpClient: HttpClient) {
