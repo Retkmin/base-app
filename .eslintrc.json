@@ -1,0 +1,63 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        // Angular style rules
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+
+        // TypeScript-specific rules
+        "@typescript-eslint/no-explicit-any": "warn", // Encourage better typing
+        "@typescript-eslint/explicit-module-boundary-types": "warn", // Require return types on functions
+        "complexity": ["error", { "max": 5 }], // Limit function complexity to 5 (good practice)
+
+        // Code quality rules
+        "no-duplicate-imports": "error",
+        "prefer-const": "error",
+        "prefer-arrow-callback": "warn",
+        "no-var": "error",
+        "no-undefined": "error", // Avoid using undefined directly
+        "no-console": ["error", { "allow": ["warn", "error"] }], // Limit console usage
+        "no-alert": "error", // Avoid using alert()
+
+        // Code formatting (Prettier integration)
+        "prettier/prettier": "error" // Ensure Prettier formatting is enforced
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/no-negated-async": "warn", // Ensure no async pipe in negation
+        "@angular-eslint/template/accessibility-elements-content": "warn" // Improve accessibility
+      }
+    }
+  ]
+}
