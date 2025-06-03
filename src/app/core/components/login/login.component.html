@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>{{'login.form.submit' | translate}}</h2>
+        <form [formGroup]="userLoginForm" (ngSubmit)="userLoginForm.valid && login()">
+            <div class="mb-3">
+                <label for="username" class="form-label">{{'login.form.user' | translate}}</label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': userLoginForm.get('username')?.invalid && userLoginForm.get('username')?.touched}" name="username" formControlName="username"/>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">{{'login.form.password' | translate}}</label>
+                <input type="password" class="form-control" [ngClass]="{ 'is-invalid': userLoginForm.get('password')?.invalid && userLoginForm.get('username')?.touched}" formControlName="password" name="password" formControlName="password" />
+            </div>
+            
+            <button class="btn btn-primary">{{'login.form.submit' | translate}}</button>
+          </form>
+    </div>
+</div>
