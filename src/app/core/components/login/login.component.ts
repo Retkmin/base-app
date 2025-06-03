@@ -11,9 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  * Componente para la gestión del login.
  */
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
   public userLoginForm: FormGroup = {} as FormGroup;

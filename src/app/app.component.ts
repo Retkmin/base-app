@@ -3,8 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { LOCALE_CONFIG } from './configuration';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent {
   constructor(translate: TranslateService) {

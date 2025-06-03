@@ -10,9 +10,10 @@ import { UserService } from 'src/app/features/components/user/service/user.servi
  * Componente para mostrar el detalle y alta de usuarios.
  */
 @Component({
-  selector: 'app-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+    selector: 'app-user-detail',
+    templateUrl: './user-detail.component.html',
+    styleUrls: ['./user-detail.component.scss'],
+    standalone: false
 })
 export class UserDetailComponent implements OnInit {
    

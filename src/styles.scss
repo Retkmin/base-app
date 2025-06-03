@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "bootstrap/dist/css/bootstrap.min.css";
-@import "open-iconic/font/css/open-iconic-bootstrap.css";
-@import "~@ng-select/ng-select/themes/default.theme.css";
-@import "app/styles/sidebar/simple-sidebar.scss";
-@import 'assets/app.scss';
+//Local imports
+
+@use 'app/styles/sidebar/simple-sidebar';
+@use 'assets/app';
+
+//External imports
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'open-iconic/font/css/open-iconic-bootstrap.css';
+@import '@ng-select/ng-select/themes/default.theme.css';

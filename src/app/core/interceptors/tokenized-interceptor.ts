@@ -1,5 +1,4 @@
-import { HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, 
-    HttpResponse, HttpRequest, HttpUserEvent } from '@angular/common/http';
+import { HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpRequest, HttpUserEvent } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { mergeMap, catchError } from 'rxjs/operators';

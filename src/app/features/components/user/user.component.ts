@@ -11,9 +11,10 @@ import { UserService } from 'src/app/features/components/user/service/user.servi
  * Componente para la búsqueda de usuarios.
  */
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    styleUrls: ['./user.component.scss'],
+    standalone: false
 })
 export class UserComponent extends PaginatedSearchComponent<User> {
     

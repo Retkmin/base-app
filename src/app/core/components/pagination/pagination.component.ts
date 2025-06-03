@@ -6,10 +6,10 @@ import { Page } from '../../helpers/search';
  * Componente para incluir la paginación en las pantallas de búsqueda.
  */
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
-
+    selector: 'app-pagination',
+    templateUrl: './pagination.component.html',
+    styleUrls: ['./pagination.component.scss'],
+    standalone: false
 })
 export class PaginationComponent implements OnChanges {
     

@@ -32,7 +32,7 @@
 			<label for="email" class="form-label">{{'user.email' | translate}}</label>
 			<div class="input-group">
 				<div class="input-group-prepend">
-					<span class="input-group-text" id="inputGroupPrepend3">@</span>
+					<span class="input-group-text" id="inputGroupPrepend3">&#64;</span>
 				</div>
 				<input type="email" class="form-control" [ngClass]="{'is-invalid': f.submitted && !email.valid}" id="email" name="email" required placeholder="{{'user.email' | translate}}" [(ngModel)]="user.email" #email="ngModel" 
 					pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">

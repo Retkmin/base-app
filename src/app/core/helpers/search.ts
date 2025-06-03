@@ -209,7 +209,10 @@ export class Order {
  * Se trata de una clase abstracta y genérica, con lo cual, cada Clase
  * que intente heredarla tiene que definir el tipo correspondiente.
  */
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: false
+})
 export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
     /**
      * Petición de búsqueda.
